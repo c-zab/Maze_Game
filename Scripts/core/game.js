@@ -1,12 +1,19 @@
+/// <reference path="_references.ts" />
 (function () {
     // Global variables
     var canvas = document.getElementById("canvas");
     var stage;
     var StartLabel;
-    var Startbutton;
+    var startbutton;
+    var assetsManager;
+    var assetsManifest;
+    assetsManifest = [{ id: "startButton", src: "/Assets/images/button.png" }];
     function Init() {
         console.log("Initialization start");
-        Start();
+        assetsManager = new createjs.LoadQueue();
+        assetsManager.installPlugin(createjs.Sound);
+        assetsManager.loadManifest(assetsManifest);
+        assetsManager.on("complete", Start, this);
     }
     function Start() {
         console.log("Starting Application...");
@@ -23,16 +30,14 @@
         console.log("Game Start...");
         StartLabel = new objects.Label("Start", "bold 60px", "Arial", "#ffffff", 320, 110, true);
         stage.addChild(StartLabel);
-        Startbutton = new objects.Button("/Assets/images/button.png", 320, 340);
-        Startbutton.regX = Startbutton.getBounds().width * 0.5;
-        Startbutton.regY = Startbutton.getBounds().height * 0.5;
-        Startbutton.on("mousedown", mouseClickButton);
-        stage.addChild(Startbutton);
+        startbutton = new objects.Button(assetsManager, "startButton", 320, 340);
+        startbutton.on("mousedown", mouseClickButton);
+        stage.addChild(startbutton);
         tween();
     }
     // width = "640" 320 height = "480" 240
     function tween() {
-        createjs.Tween.get(Startbutton, { loop: -1 })
+        createjs.Tween.get(startbutton, { loop: -1 })
             .to({ x: 320, y: 330 }, 500)
             .to({ x: 320, y: 340 }, 500);
     }
