@@ -4,14 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>MazeCOMP397</title>
+    <link type="image/png" href="/Content/images/favicon.ico" />
+    <title>MazeCZ</title>
+
     <!-- CSS Section -->
     <link rel="stylesheet" href="/Content/game.css" />
   </head>
   <body>
     <canvas id="canvas" width="640" height="480"> </canvas>
 
-    <!-- JS Section -->
+    <!--====== Scripts ==========-->
+
+    <!-- Dependencies -->
+    <script src="./node_modules/easeljs/lib/easeljs.min.js"></script>
+    <script src="./node_modules/preloadjs/lib/preloadjs.min.js"></script>
+    <script src="./node_modules/soundjs/lib/soundjs.min.js"></script>
+    <script src="./node_modules/tweenjs/lib/tweenjs.min.js"></script>
+
+    <!-- Game Scripts -->
+    <script src="/Scripts/objects/Label.js"></script>
     <script src="/Scripts/core/game.js"></script>
   </body>
 </html>
