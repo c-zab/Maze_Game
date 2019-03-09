@@ -7,6 +7,7 @@
     var assetsManifest;
     var currentScene;
     var currentState;
+    var keyboardManager;
     assetsManifest = [
         { id: "startButton", src: "/Assets/images/startButton.png" },
         { id: "dieButton", src: "/Assets/images/dieButton.png" },
@@ -34,11 +35,12 @@
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
+        keyboardManager = new managers.Keyboard();
+        objects.Game.keyboardManager = keyboardManager;
         Main();
     }
     function Update() {
         if (currentState != objects.Game.currentScene) {
-            console.log(objects.Game.currentScene);
             Main();
         }
         currentScene.Update();

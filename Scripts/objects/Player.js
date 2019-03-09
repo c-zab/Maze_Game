@@ -25,6 +25,7 @@ var objects;
         // Public Methods
         Player.prototype.Start = function () {
             this.y = 430;
+            this.x = 320;
             this.isDead = false;
         };
         Player.prototype.Update = function () {
@@ -33,7 +34,13 @@ var objects;
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
-            this.x = objects.Game.stage.mouseX;
+            // this.x = objects.Game.stage.mouseX;
+            if (objects.Game.keyboardManager.moveLeft) {
+                this.x -= 5;
+            }
+            if (objects.Game.keyboardManager.moveRight) {
+                this.x += 5;
+            }
         };
         Player.prototype.CheckBounds = function () {
             // Check right boundary
