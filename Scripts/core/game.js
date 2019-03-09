@@ -13,7 +13,8 @@
         { id: "grass", src: "/Assets/images/grass.png" },
         { id: "restartButton", src: "/Assets/images/startButton.png" },
         { id: "orange", src: "/Assets/images/orange.png" },
-        { id: "wall", src: "/Assets/images/wall.png" }
+        { id: "wall", src: "/Assets/images/wall.png" },
+        { id: "coin", src: "/Assets/images/coin.png" }
     ];
     function Init() {
         console.log("Initialization start...");

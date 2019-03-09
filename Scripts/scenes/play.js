@@ -29,24 +29,33 @@ var scenes;
         // Public Methods
         PlayScene.prototype.Start = function () {
             this._dieButton = new objects.Button(this.assetManager, "dieButton", 320, 340);
-            // this._grass = new objects.Grass(this.assetManager);
             this._player = new objects.Player(this.assetManager);
             this._wall = new objects.Wall(this.assetManager, 100, 190);
             this._wall2 = new objects.Wall(this.assetManager, 550, 190);
+            this._coinsnum = 3;
+            this._coins = new Array();
+            for (var count = 0; count < this._coinsnum; count++) {
+                this._coins[count] = new objects.Coin(this.assetManager);
+            }
             this.Main();
         };
         PlayScene.prototype.Update = function () {
-            // this._grass.Update();
             this._player.Update();
             this._wall.Update();
             this._wall2.Update();
+            this._coins.forEach(function (coin) {
+                coin.Update();
+            });
         };
         PlayScene.prototype.Main = function () {
-            // this.addChild(this._grass);
+            var _this = this;
             this.addChild(this._player);
             this.addChild(this._wall);
             this.addChild(this._wall2);
             this.addChild(this._dieButton);
+            this._coins.forEach(function (coin) {
+                _this.addChild(coin);
+            });
             this._dieButton.on("click", this._dieButtonClick);
         };
         return PlayScene;
