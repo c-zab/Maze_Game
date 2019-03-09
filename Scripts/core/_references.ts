@@ -1,3 +1,6 @@
+/// <reference path="../math/vec2.ts"/>
+/// <reference path="../managers/collision.ts"/>
+
 /// <reference path="../objects/Label.ts" />
 /// <reference path="../objects/Button.ts" />
 /// <reference path="../objects/gameobject.ts" />

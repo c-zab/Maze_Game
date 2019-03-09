@@ -49,6 +49,7 @@ module scenes {
       this._wall2.Update();
       this._coins.forEach(coin => {
         coin.Update();
+        managers.Collision.Check(this._player, coin);
       });
     }
 

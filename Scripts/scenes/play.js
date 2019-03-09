@@ -40,11 +40,13 @@ var scenes;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            var _this = this;
             this._player.Update();
             this._wall.Update();
             this._wall2.Update();
             this._coins.forEach(function (coin) {
                 coin.Update();
+                managers.Collision.Check(_this._player, coin);
             });
         };
         PlayScene.prototype.Main = function () {
