@@ -13,6 +13,12 @@ var managers;
                 if (!object2.isColliding) {
                     console.log("collision with " + object2.name);
                     object2.isColliding = true;
+                    switch (object2.name) {
+                        case "coin":
+                            this.explodeSFX = createjs.Sound.play("coinSound");
+                            this.explodeSFX.volume = 0.1;
+                            break;
+                    }
                 }
             }
             else {

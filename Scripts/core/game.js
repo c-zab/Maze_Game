@@ -14,7 +14,9 @@
         { id: "restartButton", src: "/Assets/images/startButton.png" },
         { id: "orange", src: "/Assets/images/orange.png" },
         { id: "wall", src: "/Assets/images/wall.png" },
-        { id: "coin", src: "/Assets/images/coin.png" }
+        { id: "coin", src: "/Assets/images/coin.png" },
+        { id: "backMusic", src: "/Assets/audio/backgroundMusic.mp3" },
+        { id: "coinSound", src: "/Assets/audio/coinSound.mp3" }
     ];
     function Init() {
         console.log("Initialization start...");

@@ -8,11 +8,18 @@ module scenes {
     private _coins: objects.Coin[];
     private _coinsnum: number;
 
+    private backgroundMusic: createjs.AbstractSoundInstance;
+
     // Public Properties
 
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager);
+      let engineSound: createjs.AbstractSoundInstance = createjs.Sound.play(
+        "backMusic"
+      );
+      engineSound.loop = -1;
+      engineSound.volume = 0.3;
       this.Start();
     }
 
