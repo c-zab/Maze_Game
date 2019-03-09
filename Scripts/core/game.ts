@@ -16,7 +16,8 @@
     { id: "startButton", src: "/Assets/images/startButton.png" },
     { id: "dieButton", src: "/Assets/images/dieButton.png" },
     { id: "grass", src: "/Assets/images/grass.png" },
-    { id: "restartButton", src: "/Assets/images/startButton.png" }
+    { id: "restartButton", src: "/Assets/images/startButton.png" },
+    { id: "orange", src: "/Assets/images/orange.png" }
   ];
 
   function Init(): void {
@@ -34,6 +35,8 @@
     stage.enableMouseOver(20);
     createjs.Ticker.framerate = 60;
     createjs.Ticker.on("tick", Update);
+
+    objects.Game.stage = stage;
 
     objects.Game.currentScene = config.Scene.START;
     currentState = config.Scene.START;

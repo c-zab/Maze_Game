@@ -30,13 +30,16 @@ var scenes;
         PlayScene.prototype.Start = function () {
             this._dieButton = new objects.Button(this.assetManager, "dieButton", 320, 340);
             this._grass = new objects.Grass(this.assetManager);
+            this._player = new objects.Player(this.assetManager);
             this.Main();
         };
         PlayScene.prototype.Update = function () {
             this._grass.Update();
+            this._player.Update();
         };
         PlayScene.prototype.Main = function () {
             this.addChild(this._grass);
+            this.addChild(this._player);
             this.addChild(this._dieButton);
             this._dieButton.on("click", this._dieButtonClick);
         };

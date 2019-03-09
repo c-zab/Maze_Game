@@ -2,6 +2,7 @@
 /// <reference path="../objects/Button.ts" />
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/grass.ts" />
+/// <reference path="../objects/Player.ts" />
 /// <reference path="../config/scene.ts" />
 /// <reference path="../objects/Scene.ts" />
 /// <reference path="../scenes/start.ts" />
