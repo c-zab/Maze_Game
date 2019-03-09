@@ -15,8 +15,6 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // Private Instance Variable
-        // Public Properties
         // Constructor
         function Player(assetManager) {
             var _this = _super.call(this, assetManager, "orange") || this;
@@ -27,6 +25,7 @@ var objects;
         // Public Methods
         Player.prototype.Start = function () {
             this.y = 430;
+            this.isDead = false;
         };
         Player.prototype.Update = function () {
             this.Move();

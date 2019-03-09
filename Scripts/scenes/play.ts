@@ -8,18 +8,18 @@ module scenes {
     private _coins: objects.Coin[];
     private _coinsnum: number;
 
-    private backgroundMusic: createjs.AbstractSoundInstance;
+    private _scoreboard: managers.ScoreBoard;
+
+    private _backgroundMusic: createjs.AbstractSoundInstance;
 
     // Public Properties
 
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager);
-      let engineSound: createjs.AbstractSoundInstance = createjs.Sound.play(
-        "backMusic"
-      );
-      engineSound.loop = -1;
-      engineSound.volume = 0.3;
+      this._backgroundMusic = createjs.Sound.play("backMusic");
+      this._backgroundMusic.loop = -1;
+      this._backgroundMusic.volume = 0.3;
       this.Start();
     }
 
@@ -46,6 +46,8 @@ module scenes {
       for (let count = 0; count < this._coinsnum; count++) {
         this._coins[count] = new objects.Coin(this.assetManager);
       }
+      this._scoreboard = new managers.ScoreBoard();
+      objects.Game.scoreBoardManager = this._scoreboard;
 
       this.Main();
     }
@@ -58,6 +60,16 @@ module scenes {
         coin.Update();
         managers.Collision.Check(this._player, coin);
       });
+
+      this._player.isDead = managers.Collision.Check(
+        this._player,
+        this._coins[1]
+      );
+
+      if (this._player.isDead) {
+        this._backgroundMusic.stop();
+        objects.Game.currentScene = config.Scene.OVER;
+      }
     }
 
     public Main(): void {
@@ -68,6 +80,9 @@ module scenes {
       this._coins.forEach(coin => {
         this.addChild(coin);
       });
+
+      this.addChild(this._scoreboard.ScoreLabel);
+
       this._dieButton.on("click", this._dieButtonClick);
     }
   }

@@ -4,6 +4,9 @@ module objects {
 
     // Public Properties
 
+    // Variables
+    public isDead: boolean;
+
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager, "orange");
@@ -15,6 +18,7 @@ module objects {
     // Public Methods
     public Start(): void {
       this.y = 430;
+      this.isDead = false;
     }
     public Update(): void {
       this.Move();

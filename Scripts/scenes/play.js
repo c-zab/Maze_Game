@@ -19,9 +19,9 @@ var scenes;
         // Constructor
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
-            var engineSound = createjs.Sound.play("backMusic");
-            engineSound.loop = -1;
-            engineSound.volume = 0.3;
+            _this._backgroundMusic = createjs.Sound.play("backMusic");
+            _this._backgroundMusic.loop = -1;
+            _this._backgroundMusic.volume = 0.3;
             _this.Start();
             return _this;
         }
@@ -40,6 +40,8 @@ var scenes;
             for (var count = 0; count < this._coinsnum; count++) {
                 this._coins[count] = new objects.Coin(this.assetManager);
             }
+            this._scoreboard = new managers.ScoreBoard();
+            objects.Game.scoreBoardManager = this._scoreboard;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
@@ -51,6 +53,11 @@ var scenes;
                 coin.Update();
                 managers.Collision.Check(_this._player, coin);
             });
+            this._player.isDead = managers.Collision.Check(this._player, this._coins[1]);
+            if (this._player.isDead) {
+                this._backgroundMusic.stop();
+                objects.Game.currentScene = config.Scene.OVER;
+            }
         };
         PlayScene.prototype.Main = function () {
             var _this = this;
@@ -61,6 +68,7 @@ var scenes;
             this._coins.forEach(function (coin) {
                 _this.addChild(coin);
             });
+            this.addChild(this._scoreboard.ScoreLabel);
             this._dieButton.on("click", this._dieButtonClick);
         };
         return PlayScene;

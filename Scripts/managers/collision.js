@@ -11,18 +11,24 @@ var managers;
             if (math.Vec2.Distance(P1, P2) <
                 object1.halfHeight + object2.halfHeight) {
                 if (!object2.isColliding) {
-                    console.log("collision with " + object2.name);
-                    object2.isColliding = true;
                     switch (object2.name) {
                         case "coin":
                             this.explodeSFX = createjs.Sound.play("coinSound");
                             this.explodeSFX.volume = 0.1;
+                            objects.Game.scoreBoardManager.Score += 100;
+                            break;
+                        case "prinkle":
+                            this.explodeSFX = createjs.Sound.play("coinSound");
+                            this.explodeSFX.volume = 0.1;
                             break;
                     }
+                    object2.isColliding = true;
                 }
+                return true;
             }
             else {
                 object2.isColliding = false;
+                return false;
             }
         };
         return Collision;
