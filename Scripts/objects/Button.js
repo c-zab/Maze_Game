@@ -32,7 +32,7 @@ var objects;
         }
         // Private Methods
         Button.prototype._mouseOver = function () {
-            this.alpha = 0.7;
+            this.alpha = 0.9;
         };
         Button.prototype._mouseOut = function () {
             this.alpha = 1.0;

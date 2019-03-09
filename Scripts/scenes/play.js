@@ -13,40 +13,35 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var StartScene = /** @class */ (function (_super) {
-        __extends(StartScene, _super);
+    var PlayScene = /** @class */ (function (_super) {
+        __extends(PlayScene, _super);
         // Public Properties
         // Constructor
-        function StartScene(assetManager) {
+        function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
             _this.Start();
             return _this;
         }
         // Private Methods
-        StartScene.prototype._startButtonClick = function () {
-            objects.Game.currentScene = config.Scene.PLAY;
+        PlayScene.prototype._dieButtonClick = function () {
+            objects.Game.currentScene = config.Scene.OVER;
         };
         // Public Methods
-        StartScene.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("Start Game", "Bold 60px", "Arial", "#fff", 320, 140, true);
-            this._startButton = new objects.Button(this.assetManager, "startButton", 320, 340);
+        PlayScene.prototype.Start = function () {
+            this._dieButton = new objects.Button(this.assetManager, "dieButton", 320, 340);
             this._grass = new objects.Grass(this.assetManager);
-            createjs.Tween.get(this._startButton, { loop: -1 })
-                .to({ x: 320, y: 330 }, 500)
-                .to({ x: 320, y: 340 }, 500);
             this.Main();
         };
-        StartScene.prototype.Update = function () {
+        PlayScene.prototype.Update = function () {
             this._grass.Update();
         };
-        StartScene.prototype.Main = function () {
+        PlayScene.prototype.Main = function () {
             this.addChild(this._grass);
-            this.addChild(this._welcomeLabel);
-            this.addChild(this._startButton);
-            this._startButton.on("click", this._startButtonClick);
+            this.addChild(this._dieButton);
+            this._dieButton.on("click", this._dieButtonClick);
         };
-        return StartScene;
+        return PlayScene;
     }(objects.Scene));
-    scenes.StartScene = StartScene;
+    scenes.PlayScene = PlayScene;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=start.js.map
+//# sourceMappingURL=play.js.map

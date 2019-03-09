@@ -4,6 +4,8 @@ module scenes {
     private _welcomeLabel: objects.Label;
     private _startButton: objects.Button;
 
+    private _grass: objects.Grass;
+
     // Public Properties
 
     // Constructor
@@ -21,11 +23,11 @@ module scenes {
     public Start(): void {
       this._welcomeLabel = new objects.Label(
         "Start Game",
-        "40px",
-        "Consolate",
-        "#000000",
+        "Bold 60px",
+        "Arial",
+        "#fff",
         320,
-        240,
+        140,
         true
       );
 
@@ -36,6 +38,8 @@ module scenes {
         340
       );
 
+      this._grass = new objects.Grass(this.assetManager);
+
       createjs.Tween.get(this._startButton, { loop: -1 })
         .to({ x: 320, y: 330 }, 500)
         .to({ x: 320, y: 340 }, 500);
@@ -43,9 +47,12 @@ module scenes {
       this.Main();
     }
 
-    public Update(): void {}
+    public Update(): void {
+      this._grass.Update();
+    }
 
     public Main(): void {
+      this.addChild(this._grass);
       this.addChild(this._welcomeLabel);
 
       this.addChild(this._startButton);

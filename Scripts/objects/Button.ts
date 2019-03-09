@@ -25,7 +25,7 @@ module objects {
 
     // Private Methods
     private _mouseOver(): void {
-      this.alpha = 0.7;
+      this.alpha = 0.9;
     }
 
     private _mouseOut(): void {
