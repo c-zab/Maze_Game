@@ -19,7 +19,7 @@ module managers {
             case "coin":
               this.explodeSFX = createjs.Sound.play("coinSound");
               this.explodeSFX.volume = 0.1;
-              objects.Game.scoreBoardManager.Score += 100;
+              objects.Game.scoreBoardManager.Score += 10;
               break;
             case "prinkle":
               this.explodeSFX = createjs.Sound.play("coinSound");

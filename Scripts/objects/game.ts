@@ -5,5 +5,6 @@ module objects {
     public static currentScene: number;
     public static scoreBoardManager: managers.ScoreBoard;
     public static keyboardManager: managers.Keyboard;
+    public static highScore: number = 0;
   }
 }

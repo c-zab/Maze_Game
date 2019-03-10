@@ -36,13 +36,20 @@ var objects;
         Player.prototype.Move = function () {
             // this.x = objects.Game.stage.mouseX;
             if (objects.Game.keyboardManager.moveLeft) {
-                this.x -= 5;
+                this.x -= 3;
             }
             if (objects.Game.keyboardManager.moveRight) {
-                this.x += 5;
+                this.x += 3;
+            }
+            if (objects.Game.keyboardManager.moveUp) {
+                this.y -= 3;
+            }
+            if (objects.Game.keyboardManager.moveDown) {
+                this.y += 3;
             }
         };
         Player.prototype.CheckBounds = function () {
+            // width = "640" height = "480"
             // Check right boundary
             if (this.x >= 640 - this.halfWidth) {
                 this.x = 640 - this.halfWidth;
@@ -50,6 +57,14 @@ var objects;
             // Check left boundary
             if (this.x <= this.halfWidth) {
                 this.x = this.halfWidth;
+            }
+            // Check up boundary
+            if (this.y <= this.halfHeight) {
+                this.y = this.halfHeight;
+            }
+            // Check down boundary
+            if (this.y >= 454 - this.halfHeight) {
+                this.y = 454 - this.halfHeight;
             }
         };
         return Player;

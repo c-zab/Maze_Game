@@ -28,8 +28,9 @@ module managers {
     }
 
     // constructors
-    constructor() {
+    constructor(scoreNum: number = 0) {
       this._initialize();
+      this.Score = scoreNum;
     }
 
     // private methods
@@ -37,7 +38,7 @@ module managers {
       this.ScoreLabel = new objects.Label(
         "Score: 99999",
         "20px",
-        "Consolas",
+        "Arial",
         "#FFFF00",
         500,
         10,
@@ -46,15 +47,12 @@ module managers {
       this.HighScoreLabel = new objects.Label(
         "High Score: 99999",
         "40px",
-        "Consolas",
+        "Arial",
         "#FFFF00",
-        320,
-        140,
+        350,
+        220,
         true
       );
-
-      this.Score = 0;
-      this.HighScore = 0;
     }
 
     // public methods

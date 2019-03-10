@@ -3,8 +3,11 @@ module scenes {
     // Private Instance Variables
     private _gameOverLabel: objects.Label;
     private _restartButton: objects.Button;
+    private _tryButton: objects.Button;
+    private _scoreboard: managers.ScoreBoard;
 
     // Public Properties
+    public HighScoreLabel: objects.Label;
 
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
@@ -14,7 +17,11 @@ module scenes {
 
     // Private Methods
     private _restartButtonClick(): void {
+      objects.Game.highScore = 0;
       objects.Game.currentScene = config.Scene.START;
+    }
+    private _tryButtonClick(): void {
+      objects.Game.currentScene = config.Scene.PLAY;
     }
 
     // Public Methods
@@ -29,6 +36,13 @@ module scenes {
         true
       );
 
+      this._tryButton = new objects.Button(
+        this.assetManager,
+        "tryButton",
+        320,
+        270
+      );
+
       this._restartButton = new objects.Button(
         this.assetManager,
         "restartButton",
@@ -36,6 +50,7 @@ module scenes {
         340
       );
 
+      this._scoreboard = new managers.ScoreBoard();
       this.Main();
     }
 
@@ -45,8 +60,15 @@ module scenes {
       this.addChild(this._gameOverLabel);
 
       this.addChild(this._restartButton);
+      this.addChild(this._tryButton);
+      this.addChild(this._scoreboard.HighScoreLabel);
+
+      this._scoreboard.HighScore = objects.Game.highScore;
 
       this._restartButton.on("click", this._restartButtonClick);
+      this._tryButton.on("click", this._tryButtonClick);
+
+      this._scoreboard.HighScore = objects.Game.highScore;
     }
   }
 }

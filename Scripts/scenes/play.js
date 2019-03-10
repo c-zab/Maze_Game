@@ -26,12 +26,8 @@ var scenes;
             return _this;
         }
         // Private Methods
-        PlayScene.prototype._dieButtonClick = function () {
-            objects.Game.currentScene = config.Scene.OVER;
-        };
         // Public Methods
         PlayScene.prototype.Start = function () {
-            this._dieButton = new objects.Button(this.assetManager, "dieButton", 320, 340);
             this._player = new objects.Player(this.assetManager);
             this._wall = new objects.Wall(this.assetManager, 100, 190);
             this._wall2 = new objects.Wall(this.assetManager, 550, 190);
@@ -57,6 +53,11 @@ var scenes;
             if (this._player.isDead) {
                 this._backgroundMusic.stop();
                 objects.Game.currentScene = config.Scene.OVER;
+                if (objects.Game.highScore < objects.Game.scoreBoardManager.Score) {
+                    objects.Game.scoreBoardManager.HighScore =
+                        objects.Game.scoreBoardManager.Score;
+                    objects.Game.highScore = objects.Game.scoreBoardManager.HighScore;
+                }
             }
         };
         PlayScene.prototype.Main = function () {
@@ -64,12 +65,10 @@ var scenes;
             this.addChild(this._player);
             this.addChild(this._wall);
             this.addChild(this._wall2);
-            this.addChild(this._dieButton);
             this._coins.forEach(function (coin) {
                 _this.addChild(coin);
             });
             this.addChild(this._scoreboard.ScoreLabel);
-            this._dieButton.on("click", this._dieButtonClick);
         };
         return PlayScene;
     }(objects.Scene));

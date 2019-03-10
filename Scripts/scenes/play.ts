@@ -1,7 +1,6 @@
 module scenes {
   export class PlayScene extends objects.Scene {
     // Private Instance Variables
-    private _dieButton: objects.Button;
     private _player: objects.Player;
     private _wall: objects.Wall;
     private _wall2: objects.Wall;
@@ -24,19 +23,9 @@ module scenes {
     }
 
     // Private Methods
-    private _dieButtonClick(): void {
-      objects.Game.currentScene = config.Scene.OVER;
-    }
 
     // Public Methods
     public Start(): void {
-      this._dieButton = new objects.Button(
-        this.assetManager,
-        "dieButton",
-        320,
-        340
-      );
-
       this._player = new objects.Player(this.assetManager);
       this._wall = new objects.Wall(this.assetManager, 100, 190);
       this._wall2 = new objects.Wall(this.assetManager, 550, 190);
@@ -65,10 +54,14 @@ module scenes {
         this._player,
         this._coins[1]
       );
-
       if (this._player.isDead) {
         this._backgroundMusic.stop();
         objects.Game.currentScene = config.Scene.OVER;
+        if (objects.Game.highScore < objects.Game.scoreBoardManager.Score) {
+          objects.Game.scoreBoardManager.HighScore =
+            objects.Game.scoreBoardManager.Score;
+          objects.Game.highScore = objects.Game.scoreBoardManager.HighScore;
+        }
       }
     }
 
@@ -76,14 +69,11 @@ module scenes {
       this.addChild(this._player);
       this.addChild(this._wall);
       this.addChild(this._wall2);
-      this.addChild(this._dieButton);
       this._coins.forEach(coin => {
         this.addChild(coin);
       });
 
       this.addChild(this._scoreboard.ScoreLabel);
-
-      this._dieButton.on("click", this._dieButtonClick);
     }
   }
 }

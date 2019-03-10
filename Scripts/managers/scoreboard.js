@@ -2,8 +2,10 @@ var managers;
 (function (managers) {
     var ScoreBoard = /** @class */ (function () {
         // constructors
-        function ScoreBoard() {
+        function ScoreBoard(scoreNum) {
+            if (scoreNum === void 0) { scoreNum = 0; }
             this._initialize();
+            this.Score = scoreNum;
         }
         Object.defineProperty(ScoreBoard.prototype, "Score", {
             // public properties
@@ -30,10 +32,8 @@ var managers;
         });
         // private methods
         ScoreBoard.prototype._initialize = function () {
-            this.ScoreLabel = new objects.Label("Score: 99999", "20px", "Consolas", "#FFFF00", 500, 10, false);
-            this.HighScoreLabel = new objects.Label("High Score: 99999", "40px", "Consolas", "#FFFF00", 320, 140, true);
-            this.Score = 0;
-            this.HighScore = 0;
+            this.ScoreLabel = new objects.Label("Score: 99999", "20px", "Arial", "#FFFF00", 500, 10, false);
+            this.HighScoreLabel = new objects.Label("High Score: 99999", "40px", "Arial", "#FFFF00", 350, 220, true);
         };
         return ScoreBoard;
     }());

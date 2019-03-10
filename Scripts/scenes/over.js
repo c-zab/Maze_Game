@@ -15,7 +15,6 @@ var scenes;
 (function (scenes) {
     var OverScene = /** @class */ (function (_super) {
         __extends(OverScene, _super);
-        // Public Properties
         // Constructor
         function OverScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
@@ -24,19 +23,30 @@ var scenes;
         }
         // Private Methods
         OverScene.prototype._restartButtonClick = function () {
+            objects.Game.highScore = 0;
             objects.Game.currentScene = config.Scene.START;
+        };
+        OverScene.prototype._tryButtonClick = function () {
+            objects.Game.currentScene = config.Scene.PLAY;
         };
         // Public Methods
         OverScene.prototype.Start = function () {
             this._gameOverLabel = new objects.Label("Game Over", "Bold 60px", "Arial", "#000000", 320, 140, true);
+            this._tryButton = new objects.Button(this.assetManager, "tryButton", 320, 270);
             this._restartButton = new objects.Button(this.assetManager, "restartButton", 320, 340);
+            this._scoreboard = new managers.ScoreBoard();
             this.Main();
         };
         OverScene.prototype.Update = function () { };
         OverScene.prototype.Main = function () {
             this.addChild(this._gameOverLabel);
             this.addChild(this._restartButton);
+            this.addChild(this._tryButton);
+            this.addChild(this._scoreboard.HighScoreLabel);
+            this._scoreboard.HighScore = objects.Game.highScore;
             this._restartButton.on("click", this._restartButtonClick);
+            this._tryButton.on("click", this._tryButtonClick);
+            this._scoreboard.HighScore = objects.Game.highScore;
         };
         return OverScene;
     }(objects.Scene));

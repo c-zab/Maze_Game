@@ -8,11 +8,13 @@
     var currentScene;
     var currentState;
     var keyboardManager;
+    var scoreBoard;
     assetsManifest = [
         { id: "startButton", src: "/Assets/images/startButton.png" },
         { id: "dieButton", src: "/Assets/images/dieButton.png" },
         { id: "grass", src: "/Assets/images/grass.png" },
         { id: "restartButton", src: "/Assets/images/startButton.png" },
+        { id: "tryButton", src: "/Assets/images/tryButton.png" },
         { id: "orange", src: "/Assets/images/orange.png" },
         { id: "wall", src: "/Assets/images/wall.png" },
         { id: "coin", src: "/Assets/images/coin.png" },
@@ -32,6 +34,8 @@
         stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", Update);
+        scoreBoard = new managers.ScoreBoard();
+        objects.Game.scoreBoardManager = scoreBoard;
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
