@@ -17,8 +17,12 @@ var managers;
                             this.explodeSFX.volume = 0.1;
                             objects.Game.scoreBoardManager.Score += 10;
                             break;
-                        case "prinkle":
-                            this.explodeSFX = createjs.Sound.play("coinSound");
+                        case "door":
+                            this.explodeSFX = createjs.Sound.play("doorIn");
+                            this.explodeSFX.volume = 0.1;
+                            break;
+                        case "prikles":
+                            this.explodeSFX = createjs.Sound.play("die");
                             this.explodeSFX.volume = 0.1;
                             break;
                     }

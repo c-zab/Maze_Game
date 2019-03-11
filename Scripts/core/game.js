@@ -18,8 +18,12 @@
         { id: "orange", src: "/Assets/images/orange.png" },
         { id: "wall", src: "/Assets/images/wall.png" },
         { id: "coin", src: "/Assets/images/coin.png" },
+        { id: "door", src: "/Assets/images/door.png" },
+        { id: "prikles", src: "/Assets/images/prickles.png" },
         { id: "backMusic", src: "/Assets/audio/backgroundMusic.mp3" },
-        { id: "coinSound", src: "/Assets/audio/coinSound.mp3" }
+        { id: "coinSound", src: "/Assets/audio/coinSound.mp3" },
+        { id: "doorIn", src: "/Assets/audio/doorIn.wav" },
+        { id: "die", src: "/Assets/audio/die.wav" }
     ];
     function Init() {
         console.log("Initialization start...");

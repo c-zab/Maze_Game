@@ -29,6 +29,8 @@ var scenes;
         // Public Methods
         PlayScene.prototype.Start = function () {
             this._player = new objects.Player(this.assetManager);
+            this._door = new objects.Door(this.assetManager);
+            this._prikle = new objects.Prikle(this.assetManager);
             this._wall = new objects.Wall(this.assetManager, 100, 190);
             this._wall2 = new objects.Wall(this.assetManager, 550, 190);
             this._coinsnum = 3;
@@ -43,13 +45,26 @@ var scenes;
         PlayScene.prototype.Update = function () {
             var _this = this;
             this._player.Update();
+            this._door.Update();
+            this._prikle.Update();
             this._wall.Update();
             this._wall2.Update();
             this._coins.forEach(function (coin) {
                 coin.Update();
                 managers.Collision.Check(_this._player, coin);
             });
-            this._player.isDead = managers.Collision.Check(this._player, this._coins[1]);
+            // I copy and paste these lines bc of the due hour
+            this._player.isDead = managers.Collision.Check(this._player, this._prikle);
+            if (this._player.isDead) {
+                this._backgroundMusic.stop();
+                objects.Game.currentScene = config.Scene.OVER;
+                if (objects.Game.highScore < objects.Game.scoreBoardManager.Score) {
+                    objects.Game.scoreBoardManager.HighScore =
+                        objects.Game.scoreBoardManager.Score;
+                    objects.Game.highScore = objects.Game.scoreBoardManager.HighScore;
+                }
+            }
+            this._player.isDead = managers.Collision.Check(this._player, this._door);
             if (this._player.isDead) {
                 this._backgroundMusic.stop();
                 objects.Game.currentScene = config.Scene.OVER;
@@ -63,11 +78,13 @@ var scenes;
         PlayScene.prototype.Main = function () {
             var _this = this;
             this.addChild(this._player);
+            this.addChild(this._door);
             this.addChild(this._wall);
             this.addChild(this._wall2);
             this._coins.forEach(function (coin) {
                 _this.addChild(coin);
             });
+            this.addChild(this._prikle);
             this.addChild(this._scoreboard.ScoreLabel);
         };
         return PlayScene;

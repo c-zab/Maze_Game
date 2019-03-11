@@ -35,6 +35,9 @@ var scenes;
             this._tryButton = new objects.Button(this.assetManager, "tryButton", 320, 270);
             this._restartButton = new objects.Button(this.assetManager, "restartButton", 320, 340);
             this._scoreboard = new managers.ScoreBoard();
+            createjs.Tween.get(this._tryButton, { loop: -1 })
+                .to({ x: 320, y: 260 }, 500)
+                .to({ x: 320, y: 270 }, 500);
             this.Main();
         };
         OverScene.prototype.Update = function () { };

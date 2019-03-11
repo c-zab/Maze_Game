@@ -13,32 +13,24 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Wall = /** @class */ (function (_super) {
-        __extends(Wall, _super);
+    var Prikle = /** @class */ (function (_super) {
+        __extends(Prikle, _super);
+        // Private Instance Variable
         // Public Properties
         // Constructor
-        function Wall(assetManager, xWall, yWall) {
-            var _this = _super.call(this, assetManager, "wall") || this;
-            _this._x = xWall;
-            _this._y = yWall;
+        function Prikle(assetManager) {
+            var _this = _super.call(this, assetManager, "prikles") || this;
+            _this.x = 300;
+            _this.y = 200;
             _this.Start();
             return _this;
         }
         // Private Methods
         // Public Methods
-        // Initialization
-        Wall.prototype.Reset = function () {
-            this.x = this._x;
-            this.y = this._y;
-        };
-        Wall.prototype.CheckBounds = function () { };
-        Wall.prototype.Move = function () { };
-        Wall.prototype.Start = function () {
-            this.Reset();
-        };
-        Wall.prototype.Update = function () { };
-        return Wall;
+        Prikle.prototype.Start = function () { };
+        Prikle.prototype.Update = function () { };
+        return Prikle;
     }(objects.GameObject));
-    objects.Wall = Wall;
+    objects.Prikle = Prikle;
 })(objects || (objects = {}));
-//# sourceMappingURL=wall.js.map
+//# sourceMappingURL=prickle.js.map

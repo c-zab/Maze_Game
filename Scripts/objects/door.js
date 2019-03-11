@@ -13,32 +13,24 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Wall = /** @class */ (function (_super) {
-        __extends(Wall, _super);
+    var Door = /** @class */ (function (_super) {
+        __extends(Door, _super);
+        // Private Instance Variable
         // Public Properties
         // Constructor
-        function Wall(assetManager, xWall, yWall) {
-            var _this = _super.call(this, assetManager, "wall") || this;
-            _this._x = xWall;
-            _this._y = yWall;
+        function Door(assetManager) {
+            var _this = _super.call(this, assetManager, "door") || this;
+            _this.x = 320;
+            _this.y = 20;
             _this.Start();
             return _this;
         }
         // Private Methods
         // Public Methods
-        // Initialization
-        Wall.prototype.Reset = function () {
-            this.x = this._x;
-            this.y = this._y;
-        };
-        Wall.prototype.CheckBounds = function () { };
-        Wall.prototype.Move = function () { };
-        Wall.prototype.Start = function () {
-            this.Reset();
-        };
-        Wall.prototype.Update = function () { };
-        return Wall;
+        Door.prototype.Start = function () { };
+        Door.prototype.Update = function () { };
+        return Door;
     }(objects.GameObject));
-    objects.Wall = Wall;
+    objects.Door = Door;
 })(objects || (objects = {}));
-//# sourceMappingURL=wall.js.map
+//# sourceMappingURL=door.js.map

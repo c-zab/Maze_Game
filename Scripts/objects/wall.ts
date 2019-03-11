@@ -27,21 +27,13 @@ module objects {
       this.y = this._y;
     }
 
-    public CheckBounds() {
-      // check the bottom border
-      // if (this.y >= 480 + this.height) {
-      //   this.Reset();
-      // }
-    }
+    public CheckBounds() {}
 
     public Move() {}
 
     public Start(): void {
       this.Reset();
     }
-    public Update(): void {
-      // this.Move();
-      // this.CheckBounds();
-    }
+    public Update(): void {}
   }
 }

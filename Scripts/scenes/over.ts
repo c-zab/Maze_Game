@@ -51,6 +51,11 @@ module scenes {
       );
 
       this._scoreboard = new managers.ScoreBoard();
+
+      createjs.Tween.get(this._tryButton, { loop: -1 })
+        .to({ x: 320, y: 260 }, 500)
+        .to({ x: 320, y: 270 }, 500);
+
       this.Main();
     }
 

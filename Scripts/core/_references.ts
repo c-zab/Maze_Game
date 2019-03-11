@@ -13,6 +13,8 @@
 /// <reference path="../objects/Player.ts" />
 /// <reference path="../objects/wall.ts" />
 /// <reference path="../objects/coin.ts" />
+/// <reference path="../objects/door.ts" />
+/// <reference path="../objects/prickle.ts" />
 
 /// <reference path="../objects/Scene.ts" />
 
